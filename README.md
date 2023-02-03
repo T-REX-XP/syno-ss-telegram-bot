@@ -19,11 +19,14 @@ Clone or fork this repo to use it as a base to create a dockerized  Telegram bot
 That's it. Enjoy your dockerized bot. 🚀
 
 
+Config synology cameras camera example:
 
-//,
-  // {"id": 3,
-  //   "name": "panels",
-  //   "skip_first_n_secs": 0,
-  //   "max_length_secs": 10,
-  //   "scale": 1280
-  // }
+```
+   {
+     "id": 3,
+     "name": "panels",
+     "skip_first_n_secs": 0,
+     "max_length_secs": 10,
+     "scale": 1280
+   }
+```

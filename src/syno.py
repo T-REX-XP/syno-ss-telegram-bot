@@ -194,7 +194,7 @@ class CameraMotionEventHandler:
 
         retcode = False
         try:             
-            self.bot.sendDocument(chat_id=self.config["chat_id"],
+            self.bot.sendDocument(chat_id= os.environ["CHAT_ID"],
                                    document=open('{}/{}'.format(self.ffmpeg_folder, event_id), 'rb'),
                                    caption='{} {}'.format(self.message, self.camera['name']),
                                    disable_notification=self.silence)
@@ -257,22 +257,25 @@ def run(application):
     try:
         while True:
             time.sleep(10)
+            synoUrl = os.environ['SYNOLOGY_BASE_API_URL']
+            user = os.environ["USER"]
+            passWord = os.environ["PASS"]
             if not logged_in:
-                sid = syno_login(config["synology_base_api_url"], config["synology_user"], config["synology_password"])
+                sid = syno_login(synoUrl, user ,passWord)
                 if sid == "":
                     logging.error('Synology credentials not valid')
                     continue
                 else:
                     logged_in = True
                     logging.info('Synology Auth ok %s', sid)
-                    info_data = syno_info(config["synology_base_api_url"], sid)
+                    info_data = syno_info(synoUrl, sid)
                     for camera_info in info_data["data"]["cameras"]:
                         logging.info('Synology Info Camera Id %s Name %s IP %s', camera_info["id"], camera_info["name"],
                                      camera_info["host"])
 
             for camera in config["synology_cameras"]:
                 logging.info('CameraMotionEventHandler  poll_event %s %s', camera["id"], camera["name"])
-                camera_handler = CameraMotionEventHandler(processed_events_conn, config["synology_base_api_url"],
+                camera_handler = CameraMotionEventHandler(processed_events_conn, synoUrl,
                                                           camera,
                                                           config, sid, application)
                 camera_handler.poll_event()

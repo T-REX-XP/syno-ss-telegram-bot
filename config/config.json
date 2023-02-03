@@ -1,0 +1,22 @@
+{
+  "data_folder": "/data",
+  "ffmpeg_working_folder": "/gifs",
+  "synology_cameras": [
+    {
+      "id": 1,
+      "name": "cam",
+      "skip_first_n_secs": 0,
+      "max_length_secs": 10,
+      "scale": 1280
+    },
+    {
+      "id": 4,
+      "name": "front",
+      "skip_first_n_secs": 0,
+      "max_length_secs": 10,
+      "scale": 1280
+    }
+  ],
+  "message": "Motion was detected in",
+  "silence": "False"
+}
