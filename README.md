@@ -12,7 +12,6 @@ Clone or fork this repo to use it as a base to create a dockerized  Telegram bot
 ## How to deploy the bot
 
 1. Clone or fork this repo.
-2. Write your bot in `bot.py`.
 3. Write an `.env` file with your `TELEGRAM_TOKEN` in it and other env vars.
 4. Run `docker-compose up -d` and wait for the build to finish.
 
